@@ -1,10 +1,15 @@
 buildscript {
+    val kotlin_version by extra("1.8.20")
     // ...
     val sqlDelightVersion = "1.5.5"
 
     dependencies {
         // ...
         classpath("com.squareup.sqldelight:gradle-plugin:$sqlDelightVersion")
+        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version")
+    }
+    repositories {
+        mavenCentral()
     }
 }
 plugins {

@@ -1,7 +1,7 @@
 plugins {
     kotlin("multiplatform")
-    id("com.android.library")
     kotlin("plugin.serialization") version "1.8.20"
+    id("com.android.library")
     id("com.squareup.sqldelight")
 }
 
@@ -75,10 +75,19 @@ kotlin {
 }
 
 android {
-    namespace = "com.example.sapp"
     compileSdk = 33
+    sourceSets["main"].manifest.srcFile("src/androidMain/AndroidManifest.xml")
     defaultConfig {
         minSdk = 24
         targetSdk = 33
+    }
+}
+dependencies {
+    implementation("androidx.core:core-ktx:+")
+}
+
+sqldelight {
+    database("AppDatabase") {
+        packageName = "com.jetbrains.handson.kmm.shared.cache"
     }
 }
